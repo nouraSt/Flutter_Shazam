@@ -41,10 +41,11 @@ class cardWidget extends StatelessWidget {
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: Image.asset('assets/images/rec.png',
-                  fit:BoxFit.fill,
-                  
-                 ),
+                  child: ClipRRect(
+                    child: Image.asset('assets/images/rec.png',
+                    fit:BoxFit.fill,
+                                   ),
+                  ),
                 ),
                Positioned(
                   bottom: 0,

@@ -18,53 +18,32 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: <Widget>[
-        Container(
-      width: 36,
-      height: 36,
-      
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-        top: 0,
-        left: 0,
-        child: Container(
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(
-          borderRadius : BorderRadius.only(
-            topLeft: Radius.circular(8),
-            topRight: Radius.circular(8),
-            bottomLeft: Radius.circular(8),
-            bottomRight: Radius.circular(8),
+        Positioned(
+          top: 0,
+          right: 20,
+          child: Container(
+            height: 22,
+            width: 22,
+            color: Colors.white10,
+            alignment: Alignment.center,
+            
+            // decoration: BoxDecoration(
+            //   color: const Color.fromARGB(255, 248, 247, 247),
+
+            //   borderRadius: BorderRadius.circular(10),
+            //   // ignore: prefer_const_literals_to_create_immutables
+             
+            // ),
+            child: const SizedBox(
+              
+              child: Icon(
+                  CupertinoIcons.bell,
+                  color: Colors.black,                
+              ),
+            ),
           ),
-      color : Color.fromRGBO(255, 255, 255, 1),
-  )
-      )
-      ),Positioned(
-        top: 9,
-        left: 9,
-        child: Container(
-      width: 18,
-      height: 18,
-      decoration: BoxDecoration(
-          color : Color.fromRGBO(255, 255, 255, 1),
-  ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-        top: 3.749060869216919,
-        left: 3,
-        child: Image.asset(
-        'assets/images/bellicon.jpg')
-      ),
-        ]
-      )
-    )
-      ),
-        ]
-      )
-    
-     ) ],
+        )
+      ],
       backgroundColor: Colors.transparent,
       elevation: 0,
     );
