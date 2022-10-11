@@ -113,13 +113,13 @@ class _HomeState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                       TextWidget(text: 'PChanger de centre commercial',textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w200, color: Colors.grey), ),
-                      SizedBox(width: 10,),
-                      Icon(Icons.arrow_forward)
+                      const SizedBox(width: 10,),
+                      const Icon(Icons.arrow_forward)
                     ],
                     )
                     ,
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Column(children: [
                     cardWidget(roundedRectangleBorder: roundedRectangleBorder, cwidth: MediaQuery.of(context).size.width, cheight: MediaQuery.of(context).size.height*0.17, ctext1: 'gangnez', ctext2: '500'),
                     Container(

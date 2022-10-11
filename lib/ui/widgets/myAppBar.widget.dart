@@ -18,41 +18,53 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: <Widget>[
-        Positioned(
-          top: 0,
-          right: 0,
-          child: Container(
-            margin: const EdgeInsets.all(10.0),
-            padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-                alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 248, 247, 247),
-
-              borderRadius: BorderRadius.circular(10),
-              // ignore: prefer_const_literals_to_create_immutables
-              boxShadow: [
-                const BoxShadow(
-                  color: Color.fromARGB(255, 124, 123, 123),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
-            ),
-            child: const SizedBox(
-              
-              child: Center(
-                child: Icon(
-                  CupertinoIcons.bell,
-                  color: Colors.black,
-                  size: 20,
-                ),
-              ),
-            ),
+        Container(
+      width: 36,
+      height: 36,
+      
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+        top: 0,
+        left: 0,
+        child: Container(
+        width: 36,
+        height: 36,
+        decoration: BoxDecoration(
+          borderRadius : BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+            bottomLeft: Radius.circular(8),
+            bottomRight: Radius.circular(8),
           ),
-        )
-      ],
+      color : Color.fromRGBO(255, 255, 255, 1),
+  )
+      )
+      ),Positioned(
+        top: 9,
+        left: 9,
+        child: Container(
+      width: 18,
+      height: 18,
+      decoration: BoxDecoration(
+          color : Color.fromRGBO(255, 255, 255, 1),
+  ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+        top: 3.749060869216919,
+        left: 3,
+        child: Image.asset(
+        'assets/images/bellicon.jpg')
+      ),
+        ]
+      )
+    )
+      ),
+        ]
+      )
+    
+     ) ],
       backgroundColor: Colors.transparent,
       elevation: 0,
     );
