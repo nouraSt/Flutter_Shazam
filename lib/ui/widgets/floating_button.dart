@@ -7,15 +7,23 @@ class FloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton( 
-          backgroundColor: Colors.red,
-          shape: RoundedRectangleBorder(borderRadius:
-          BorderRadius.all(Radius.circular(15.0) ,)),
-          //Floating action button on Scaffold
-             onPressed: (){
-            //code to execute on button press
-             },
-             child: Icon(Icons.add), //icon inside button
-         );
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        border: Border.all(color:Colors.white, width:5, style: BorderStyle.solid,
+        )
+      ),
+      child: FloatingActionButton( 
+            backgroundColor: Colors.red,
+            shape: RoundedRectangleBorder(borderRadius:
+            BorderRadius.all(Radius.circular(15.0) ,)),
+            //Floating action button on Scaffold
+               onPressed: (){
+              //code to execute on button press
+               },
+               child: Icon(Icons.add), //icon inside button
+           ),
+    );
   }
 }

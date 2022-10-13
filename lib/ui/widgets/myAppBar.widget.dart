@@ -18,32 +18,42 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: <Widget>[
-        Positioned(
-          top: 0,
-          right: 20,
-          child: Container(
-            height: 22,
-            width: 22,
-            color: Colors.white10,
-            alignment: Alignment.center,
-            
-            // decoration: BoxDecoration(
-            //   color: const Color.fromARGB(255, 248, 247, 247),
-
-            //   borderRadius: BorderRadius.circular(10),
-            //   // ignore: prefer_const_literals_to_create_immutables
-             
-            // ),
-            child: const SizedBox(
-              
-              child: Icon(
-                  CupertinoIcons.bell,
-                  color: Colors.black,                
-              ),
+        Stack(children: [
+          Positioned(
+            top:0,
+            right: 0,
+            left: 0,
+            bottom:0,
+            child: Center(
+              child: Container(
+                  height: 30,
+                  width: 30,
+                  
+                 // ignore: prefer_const_constructors
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+              color: Color.fromARGB(255, 244, 244, 245),
+              boxShadow: [
+                
+                BoxShadow(
+                  
+                   color: Colors.grey.withOpacity(0.5),
+                   spreadRadius: 2,
+                   blurRadius: 4,
+                   offset: Offset(0, 3), // changes position of shadow
+             ),
+              ]
+    
+                 ),
+                 alignment: Alignment.center,
+                  ),
+                ),
             ),
-          ),
-        )
-      ],
+          
+          
+          
+          Center(child: IconButton( icon: const Icon(CupertinoIcons.bell, color: Colors.black,), onPressed: () {  },))
+      ])],
       backgroundColor: Colors.transparent,
       elevation: 0,
     );
