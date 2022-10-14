@@ -31,8 +31,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   
                  // ignore: prefer_const_constructors
               decoration: BoxDecoration(
+                
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
               color: Color.fromARGB(255, 244, 244, 245),
+              
               boxShadow: [
                 
                 BoxShadow(

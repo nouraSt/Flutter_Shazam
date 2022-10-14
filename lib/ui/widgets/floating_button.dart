@@ -3,8 +3,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class FloatingButton extends StatelessWidget {
-  const FloatingButton({super.key});
-
+  
+  FloatingButton({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,6 +22,7 @@ class FloatingButton extends StatelessWidget {
             //Floating action button on Scaffold
                onPressed: (){
               //code to execute on button press
+               
                },
                child: Icon(Icons.add), //icon inside button
            ),
