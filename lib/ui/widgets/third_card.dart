@@ -1,3 +1,4 @@
+import 'package:first_project/ui/Constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -38,7 +39,7 @@ class ThirdCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:  [
-                    Center(child: Text('-10%',style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w600) )),
+                    Center(child: Text('-10%',style: gras )),
                   
                   ],),
                ),

@@ -1,3 +1,4 @@
+import 'package:first_project/ui/Constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -14,7 +15,7 @@ class ForthCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width/2-20,
-        height: MediaQuery.of(context).size.height*0.15,
+        height: MediaQuery.of(context).size.height*0.17,
          
         child: Card(
           shape: roundedRectangleBorder,
@@ -36,8 +37,9 @@ class ForthCard extends StatelessWidget {
                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    // ignore: prefer_const_literals_to_create_immutables
                     children:  [
-                    Center(child: Text('1 mug\n offert',style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w600) )),
+                    Center(child: Text('1 mug\n offert',style: gras )),
                     
                   ],),
                ),

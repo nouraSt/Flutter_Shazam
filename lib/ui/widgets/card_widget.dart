@@ -3,6 +3,7 @@
 // ignore: file_names
 
 
+import 'package:first_project/ui/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
 
@@ -65,7 +66,7 @@ class cardWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:  [
                     Center(child: Text(ctext1,style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w100) )),
-                    Center(child: Text(ctext2,style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w700) ))
+                    Center(child: Text(ctext2,style:gras))
                   ],),
                ),
              ),

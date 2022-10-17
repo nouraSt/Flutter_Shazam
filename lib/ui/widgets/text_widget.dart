@@ -16,6 +16,7 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(text,
+      textAlign: TextAlign.center,
                       style:
                           textStyle,)
                           

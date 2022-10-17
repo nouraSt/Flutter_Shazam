@@ -1,4 +1,5 @@
 
+import 'package:first_project/ui/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
 
@@ -34,7 +35,7 @@ class FifthWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:  [
-                    Center(child: Text('Carte\n cadeau',style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w600) )),
+                    Center(child: Text('Carte\n cadeau',style: gras )),
                     
                   ],),
                ),

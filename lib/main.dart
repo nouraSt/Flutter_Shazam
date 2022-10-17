@@ -1,3 +1,5 @@
+import 'package:first_project/ui/pages/second_page.dart';
+import 'package:first_project/ui/pages/third_page.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/ui/pages/home.page.dart';
 
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         "/": ((context) => const HomePage()),
+        "/ajouter-ticket": ((context) => const SecondPage())
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
