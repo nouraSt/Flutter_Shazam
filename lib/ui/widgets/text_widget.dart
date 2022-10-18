@@ -9,8 +9,8 @@ class TextWidget extends StatelessWidget {
    required this.textStyle
     }):super(key: key);
   
-  String text='';
-  TextStyle textStyle = TextStyle();
+  final String text;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
