@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
         "/ticket-nonvalide":((context) => const ForthPage())
       },
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(
+        
+      ),
       initialRoute: "/",
     );
   }

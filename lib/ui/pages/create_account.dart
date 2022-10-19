@@ -1,7 +1,11 @@
+import 'package:first_project/ui/widgets/orange_button.dart';
+import 'package:first_project/ui/widgets/text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
+import 'package:getwidget/getwidget.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -11,8 +15,48 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  
   @override
   Widget build(BuildContext context) {
+     DateTime? _chosenDateTime;
+
+  // Show the modal that contains the CupertinoDatePicker
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
+                topRight:  Radius.circular(20))
+              ),
+             
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 350,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            _chosenDateTime = val;
+                          });
+                        }),
+                  ),
+
+                  // Close the modal
+                  CupertinoButton(
+                    child:OrangeButton('Selectionner'),
+                    onPressed: () => Navigator.of(ctx).pop(),
+                  )
+                ],
+              ),
+            ));
+  }
+  bool isChecked = false;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 231, 231, 231),
       extendBodyBehindAppBar: false,
@@ -20,7 +64,7 @@ class _CreateAccountState extends State<CreateAccount> {
         elevation: 0,
         leading: Builder(builder: (BuildContext context) {
       return IconButton(
-        icon: const Icon(CupertinoIcons.back, color:  Color.fromARGB(255, 56, 55, 55)),
+        icon: const Icon(CupertinoIcons.arrow_left, color:  Color.fromARGB(255, 56, 55, 55)),
         onPressed: () { Scaffold.of(context).openDrawer(); },
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       );
@@ -32,9 +76,9 @@ class _CreateAccountState extends State<CreateAccount> {
       body:
         Column(
            
-            children:  const [
+            children:   [
             
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 10,left: 10),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -42,8 +86,61 @@ class _CreateAccountState extends State<CreateAccount> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),),
               ),
             ),
-            SizedBox(height: 10,),
-            TextFormField("Nom*"),
+            const SizedBox(height: 10,),
+            TextFieldd('Nom*:','Nom*:'),
+            TextFieldd('Prenom*','Prenom*'),
+            TextFieldd('Email*','Email*'),
+            TextFieldd('Adresse*','Adresse*'),
+            Row(children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width/2,
+                child: TextFieldd('CP*','CP*')),
+              SizedBox(
+                width: MediaQuery.of(context).size.width/2,
+                child: TextFieldd('Ville*','Ville*')),
+            ],),
+            Padding(
+               padding: const EdgeInsets.all(10),
+              child: TextField(
+                      decoration:  InputDecoration(
+                        
+                        filled: true,
+                        hintText: "Année de naissance",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                          width: 0, 
+                          style: BorderStyle.none,
+                ),
+                        ),
+                        labelText: "Année de naissance*",
+                      ),
+                    
+                      readOnly: true,
+                      onTap: () {
+                      _showDatePicker(context);
+
+          },
+                      ),
+            ),
+           Row(children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right:10 ),
+              child:GFCheckbox(
+                size: GFSize.SMALL,
+                
+               activeBgColor: Color.fromARGB(255, 248, 246, 246),
+                    onChanged: (value) {
+       
+                       },
+                value: isChecked,
+               inactiveIcon: null,
+              ),),
+            const Text('jaccepte les conditions d utilisation ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.normal),)
+           ],),
+           SizedBox(height: 10,),
+           OrangeButton('Créer mon compte et participer')
 
             
           
@@ -52,6 +149,7 @@ class _CreateAccountState extends State<CreateAccount> {
             
           
           ]),
+          
         
       );
     
