@@ -1,4 +1,5 @@
 import 'package:first_project/main.dart';
+import 'package:first_project/ui/Constants/constants.dart';
 import 'package:first_project/ui/widgets/my_appBar.widget.dart';
 import 'package:first_project/ui/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -44,14 +45,11 @@ class _ThirdWidgetState extends State<ThirdWidget> {
                     
                      TextWidget(text: 'Votre ticket a été ajouté:', textStyle: const TextStyle(color:Color.fromRGBO(248, 195, 183, 1 ),
                     fontWeight: FontWeight.w100, fontSize: 19)),
-                    TextWidget(text: 'Magazin McDonalds', textStyle: const TextStyle(color: Color.fromARGB(255, 255, 102, 148), 
-                    fontWeight: FontWeight.w200, fontSize: 27)),
+                    TextWidget(text: 'Magazin McDonalds', textStyle: pinkgras),
                     const SizedBox(height: 50,),
-                    TextWidget(text: 'Ce ticket vous offre 1 chance', textStyle: const TextStyle(color: Color.fromARGB(255, 245, 244, 244), 
-                    fontWeight: FontWeight.w200, fontSize: 16)),
+                    TextWidget(text: 'Ce ticket vous offre 1 chance', textStyle: petitBlanc),
                 
-                    TextWidget(text: ' de gagner cette semaine!' ,textStyle: const TextStyle(color: Color.fromARGB(255, 245, 244, 244), 
-                    fontWeight: FontWeight.w300, fontSize: 16)),
+                    TextWidget(text: ' de gagner cette semaine!' ,textStyle: petitBlanc),
 
                     const SizedBox(height: 50,),
                     ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(

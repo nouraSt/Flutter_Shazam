@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:first_project/ui/Constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -8,12 +6,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../widgets/my_appBar.widget.dart';
 import '../widgets/text_widget.dart';
 
-class ForthPage extends StatelessWidget {
-  const ForthPage({super.key});
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
         appBar: const MyAppBar(),
         body:Padding(
           padding: EdgeInsets.only(top:20),
@@ -68,3 +66,4 @@ class ForthPage extends StatelessWidget {
     );
   }
 }
+  
