@@ -110,7 +110,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           decoration:  InputDecoration(
                             
                             filled: true,
-                            hintText: "Année de naissance",
+                            hintText: "Année de naissanc",
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
