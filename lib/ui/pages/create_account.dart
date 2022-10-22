@@ -32,7 +32,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
                 topRight: Radius.circular(20) )
                ),
-              height:400,
+              height: 400,
               child: Column(
                 children: [
                   CupertinoPicker(
@@ -46,17 +46,18 @@ class _CreateAccountState extends State<CreateAccount> {
                   onSelectedItemChanged: (value) {
                     setState(() {
                       selectedValue = value;
-                      item = listofyears[value] ;
-                      if(item!=null){
-                        textController.text= (item).toString();
-                       // textController.text = DateFormat('yyyy').format(item);
-                      }
                     });
-                    
+                    item = listofyears[value] ;
+                   if(item!=0){
+                     textController.text= (item).toString();
+                   }
                    
                   },
                 ),
-               
+                CupertinoButton(
+                    child: const Text('Selectionner'),
+                    onPressed: () => Navigator.of(ctx).pop(),
+                  )
                 ]
               ),
             ));
