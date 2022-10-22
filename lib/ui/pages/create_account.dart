@@ -21,47 +21,42 @@ class _CreateAccountState extends State<CreateAccount> {
     bool  isChecked=false;
     int selectedValue = 0;
     int value=0;
-    int item=0;
+    String selectedItem;
     List<int> listofyears = List.generate(100, (index) => 1980+index);
-    var textController = new TextEditingController();
-  void _showPicker(BuildContext ctx) {
-    showCupertinoModalPopup(
-        context: ctx,
-        builder: (_) => Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
-                topRight: Radius.circular(20) )
-               ),
-              height: 400,
-              child: Column(
-                children: [
-                  CupertinoPicker(
-                  backgroundColor: Colors.white,
-                  itemExtent: 30,
-                  scrollController: FixedExtentScrollController(initialItem: 1),
-                  children: 
-                    listofyears.map((year) => Text('$year')).toList()
-                   
-                  ,
-                  onSelectedItemChanged: (value) {
-                    setState(() {
-                      selectedValue = value;
-                    });
-                    item = listofyears[value] ;
-                   if(item!=0){
-                     textController.text= (item).toString();
-                   }
-                   
-                  },
-                ),
-                CupertinoButton(
-                    child: const Text('Selectionner'),
-                    onPressed: () => Navigator.of(ctx).pop(),
-                  )
-                ]
-              ),
-            ));
-  }
+    var textController = TextEditingController();
+
+ Widget widgetCupertinoPicker() {
+       return Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
+          topRight: Radius.circular(20))
+        ),
+        height: 400,
+        child: CupertinoPicker(
+          
+        backgroundColor: Colors.white,
+        itemExtent: 50,
+         looping: true,
+         magnification: 1.5,
+        children: listofyears
+        .map((item) => Center(
+        child: Text(
+           (item).toString(),
+        style: TextStyle(fontSize: 30),
+       ),
+       ))
+      .toList(),
+      onSelectedItemChanged: (index) {
+         setState(() => selectedValue = index);
+         selectedItem = listofyears[index].toString();
+         textController.text= selectedItem;
+// setState(() {
+// selectItem=value.toString();
+// });
+},
+),
+);
+}
     return Scaffold(
           backgroundColor: Color.fromARGB(255, 231, 231, 231),
           extendBodyBehindAppBar: false,
@@ -124,7 +119,11 @@ class _CreateAccountState extends State<CreateAccount> {
                         
                           readOnly: true,
                           onTap: () {
-                            _showPicker(context);
+                            showCupertinoModalPopup<void>(
+                             context: context,
+                             builder: (BuildContext context) {
+                            return widgetCupertinoPicker();
+                           });
                           },
                           controller: textController,
               
