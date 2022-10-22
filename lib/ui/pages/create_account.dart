@@ -27,40 +27,45 @@ class _CreateAccountState extends State<CreateAccount> {
   void _showPicker(BuildContext ctx) {
     showCupertinoModalPopup(
         context: ctx,
-        builder: (_) => Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
-                topRight: Radius.circular(20) )
-               ),
-              height: 400,
-              child: Column(
-                children: [
-                  CupertinoPicker(
-                  backgroundColor: Colors.white,
-                  itemExtent: 30,
-                  scrollController: FixedExtentScrollController(initialItem: 1),
-                  children: 
-                    listofyears.map((year) => Text('$year')).toList()
+        builder: (_) => Column(
+          children: [
+            Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20) )
+                   ),
+                  height: 400,
+                  child: 
+                      CupertinoPicker(
+                      backgroundColor: Colors.white,
+                      itemExtent: 30,
+                      scrollController: FixedExtentScrollController(initialItem: 1),
+                      children: 
+                        listofyears.map((year) => Text('$year')).toList()
+                       
+                      ,
+                      onSelectedItemChanged: (value) {
+                        setState(() {
+                          selectedValue = value;
+                        });
+                        item = listofyears[value] ;
+                       if(item!=0){
+                         textController.text= (item).toString();
+                       }
+                       
+                      },
+                    ),
                    
-                  ,
-                  onSelectedItemChanged: (value) {
-                    setState(() {
-                      selectedValue = value;
-                    });
-                    item = listofyears[value] ;
-                   if(item!=0){
-                     textController.text= (item).toString();
-                   }
-                   
-                  },
-                ),
-                CupertinoButton(
-                    child: const Text('Selectionner'),
-                    onPressed: () => Navigator.of(ctx).pop(),
-                  )
-                ]
-              ),
-            ));
+                    
+                  ),
+
+                   CupertinoButton(
+                        child: const Text('Selectionner'),
+                        onPressed: () => Navigator.of(ctx).pop(),
+                      )
+          ],
+        ),
+            );
   }
     return Scaffold(
           backgroundColor: Color.fromARGB(255, 231, 231, 231),
