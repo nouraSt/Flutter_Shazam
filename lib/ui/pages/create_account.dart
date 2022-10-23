@@ -26,36 +26,94 @@ class _CreateAccountState extends State<CreateAccount> {
     var textController = TextEditingController();
 
  Widget widgetCupertinoPicker() {
-       return Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
-          topRight: Radius.circular(20))
-        ),
-        height: 400,
-        child: CupertinoPicker(
-          
-        backgroundColor: Colors.white,
-        itemExtent: 50,
-         looping: true,
-         magnification: 1.5,
-        children: listofyears
-        .map((item) => Center(
-        child: Text(
-           (item).toString(),
-        style: TextStyle(fontSize: 30),
+       return Stack(
+         children:[ 
+          Container(
+         
+          height: 400,
+          child: Container(
+            decoration: const BoxDecoration( 
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
+            topRight: Radius.circular(30) )),
+            child: CupertinoTheme(
+              data: const CupertinoThemeData(
+               
+              ),
+              child: CupertinoPicker(
+              
+              backgroundColor: Colors.white,
+              itemExtent: 50,
+               looping: true,
+               magnification: 1.5,
+              children: listofyears
+              .map((item) => Center(
+              child: Column(
+                children: [
+                  const Expanded(
+                     child: Divider(
+                      indent: 60,
+                      endIndent: 60,
+                     )
+                     ), 
+                  Text(
+                     (item).toString(),
+                  style: const TextStyle(fontSize: 30),
+                      ),
+                 const Expanded(
+                      child: Divider(
+                        indent: 60,
+                      endIndent: 60,
+                      )
+                   ), 
+                ],
+              ),
+                     ))
+                 .toList(),
+                 onSelectedItemChanged: (index) {
+               setState(() => selectedValue = index);
+               selectedItem = listofyears[index].toString();
+               textController.text= selectedItem;
+                   // setState(() {
+                   // selectItem=value.toString();
+                   // });
+                   },
+                   ),
+            ),
+          ),
        ),
-       ))
-      .toList(),
-      onSelectedItemChanged: (index) {
-         setState(() => selectedValue = index);
-         selectedItem = listofyears[index].toString();
-         textController.text= selectedItem;
-// setState(() {
-// selectItem=value.toString();
-// });
-},
-),
-);
+       Positioned(
+        bottom:0,
+        right: 0,
+        left: 0,
+        child: Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+               style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 247, 79, 57)
+               ),
+                child: const Text('Selectionner'),
+                onPressed: (){
+                      Navigator.pop(context);
+              },),
+            ),
+          ))),
+          const Positioned(
+           
+           right: 0,
+           child:  Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Icon(CupertinoIcons.clear_thick)
+            ),
+          )),
+
+       ]
+       );
 }
     return Scaffold(
           backgroundColor: Color.fromARGB(255, 231, 231, 231),
