@@ -21,26 +21,28 @@ class _SecondPageState extends State<SecondPage> {
   File image= File('assets/images/logo1');
 
  Future pickImage() async {
-  //final imagee = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //if(imagee == null) return;
- // final imageTemp = File(imagee.path);
-  //setState(() {
-  //  image = imageTemp;
- // });
+  print('open image');
+  final imagee = await ImagePicker().pickImage(source: ImageSource.gallery);
+  if(imagee == null) return;
+   final imageTemp = File(imagee.path);
+  setState(() {
+   image = imageTemp;
+  });
 }
 
 Future getFromCamera() async {
-   // final pickedFile = await ImagePicker().getImage(
-      //  source: ImageSource.camera,
-       // maxWidth: 1800,
-       // maxHeight: 1800,
-   // );
-    //if (pickedFile != null) {
-     //   File imageFile = File(pickedFile.path);
-      //  setState(() {
-       //   image = imageFile;
-       // });
-  //  }
+  print('open camera');
+    final pickedFile = await ImagePicker().getImage(
+        source: ImageSource.camera,
+        maxWidth: 1800,
+        maxHeight: 1800,
+    );
+    if (pickedFile != null) {
+        File imageFile = File(pickedFile.path);
+        setState(() {
+          image = imageFile;
+        });
+   }
    
     
 }
