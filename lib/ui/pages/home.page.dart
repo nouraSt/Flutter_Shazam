@@ -2,7 +2,7 @@
 import 'package:first_project/ui/widgets/floating_button.dart';
 
 import 'package:first_project/ui/widgets/my_appBar.widget.dart';
-import 'package:first_project/ui/widgets/mynavigation_bar.widget.dart';
+import 'package:first_project/ui/widgets/my_navigation_bar.widget.dart';
 import 'package:first_project/ui/pages/second_page.dart';
 
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class _HomeState extends State<HomePage> {
  
     return Scaffold(
       appBar: const MyAppBar(),
-      body:  FirstScreen(roundedRectangleBorder: roundedRectangleBorder),
+      body:  SingleChildScrollView(child: FirstScreen(roundedRectangleBorder: roundedRectangleBorder)),
       floatingActionButton: FloatingButton() ,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const MyNavigationBar(),

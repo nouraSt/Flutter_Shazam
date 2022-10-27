@@ -1,8 +1,9 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'dart:io';
+
+
 
 
 
@@ -12,10 +13,11 @@ class GreenButton extends StatelessWidget {
    
   GreenButton( this.icon,
   this.text,
-  
+  this.tap,
   {super.key});
   Icon icon= Icon(CupertinoIcons.photo_camera, color: Colors.white,);
   String text ='';
+  Future<dynamic> tap;
   
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class GreenButton extends StatelessWidget {
               child:
               GestureDetector(child: icon,
               onTap: (){
-                  
+                  tap;
               },
               )),
              SizedBox(width: 10,),

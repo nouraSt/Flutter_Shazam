@@ -1,3 +1,4 @@
+import 'package:first_project/ui/pages/home.page.dart';
 import 'package:first_project/ui/widgets/orange_button.dart';
 import 'package:first_project/ui/widgets/text_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,59 +29,62 @@ class _CreateAccountState extends State<CreateAccount> {
  Widget widgetCupertinoPicker() {
        return Stack(
          children:[ 
-          Container(
-         
-          height: 400,
-          child: Container(
-            decoration: const BoxDecoration( 
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
-            topRight: Radius.circular(30) )),
-            child: CupertinoTheme(
-              data: const CupertinoThemeData(
-               
-              ),
-              child: CupertinoPicker(
-              
-              backgroundColor: Colors.white,
-              itemExtent: 50,
-               looping: true,
-               magnification: 1.5,
-              children: listofyears
-              .map((item) => Center(
-              child: Column(
-                children: [
-                  const Expanded(
-                     child: Divider(
-                      indent: 60,
-                      endIndent: 60,
-                     )
-                     ), 
-                  Text(
-                     (item).toString(),
-                  style: const TextStyle(fontSize: 30),
+       
+          
+             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+               child: ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                 child: SizedBox(
+                           height: 350,
+                           child: CupertinoTheme(
+                  data: const CupertinoThemeData(
+                   
+                  ),
+                  child: CupertinoPicker(
+                  
+                  backgroundColor: Colors.white,
+                  itemExtent: 50,
+                   looping: true,
+                   magnification: 1.5,
+                  children: listofyears
+                  .map((item) => Center(
+                  child: Column(
+                    children: [
+                      const Expanded(
+                         child: Divider(
+                          indent: 60,
+                          endIndent: 60,
+                         )
+                         ), 
+                      Text(
+                         (item).toString(),
+                      style: const TextStyle(fontSize: 30),
+                          ),
+                     const Expanded(
+                          child: Divider(
+                            indent: 60,
+                          endIndent: 60,
+                          )
+                       ), 
+                    ],
+                  ),
+                         ))
+                     .toList(),
+                     onSelectedItemChanged: (index) {
+                   setState(() => selectedValue = index);
+                   selectedItem = listofyears[index].toString();
+                   textController.text= selectedItem;
+                       // setState(() {
+                       // selectItem=value.toString();
+                       // });
+                       },
+                       ),
+                           ),
+                         
                       ),
-                 const Expanded(
-                      child: Divider(
-                        indent: 60,
-                      endIndent: 60,
-                      )
-                   ), 
-                ],
-              ),
-                     ))
-                 .toList(),
-                 onSelectedItemChanged: (index) {
-               setState(() => selectedValue = index);
-               selectedItem = listofyears[index].toString();
-               textController.text= selectedItem;
-                   // setState(() {
-                   // selectItem=value.toString();
-                   // });
-                   },
-                   ),
-            ),
-          ),
-       ),
+               ),
+             ),
        Positioned(
         bottom:0,
         right: 0,
@@ -105,7 +109,7 @@ class _CreateAccountState extends State<CreateAccount> {
            
            right: 0,
            child:  Padding(
-              padding: EdgeInsets.only(bottom: 10),
+              padding: EdgeInsets.all(20),
               child: Padding(
               padding: EdgeInsets.all(10),
               child: Icon(CupertinoIcons.clear_thick)
@@ -123,8 +127,8 @@ class _CreateAccountState extends State<CreateAccount> {
             leading: Builder(builder: (BuildContext context) {
           return IconButton(
             icon: const Icon(CupertinoIcons.arrow_left, color:  Color.fromARGB(255, 56, 55, 55)),
-            onPressed: () { Scaffold.of(context).openDrawer(); },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())); },
+           
           );
         },),
            backgroundColor: Colors.transparent,
@@ -137,7 +141,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 children:   [
                 
                 const Padding(
-                  padding: EdgeInsets.only(top: 10,left: 10),
+                  padding: EdgeInsets.only(top: 10,left: 20, ),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text('les champs marqués dune astériqsues\n sont obligatoire',
@@ -146,9 +150,13 @@ class _CreateAccountState extends State<CreateAccount> {
                 ),
                 const SizedBox(height: 10,),
                 TextFieldd('Nom*:','Nom*:'),
+                const SizedBox(height: 10,),
                 TextFieldd('Prenom*','Prenom*'),
+                const SizedBox(height: 10,),
                 TextFieldd('Email*','Email*'),
+                const SizedBox(height: 10,),
                 TextFieldd('Adresse*','Adresse*'),
+                const SizedBox(height: 10,),
                 Row(children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width/2,
@@ -157,8 +165,9 @@ class _CreateAccountState extends State<CreateAccount> {
                     width: MediaQuery.of(context).size.width/2,
                     child: TextFieldd('Ville*','Ville*')),
                 ],),
+                const SizedBox(height: 10,),
                 Padding(
-                   padding: const EdgeInsets.all(10),
+                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
                           decoration:  InputDecoration(
                             
@@ -187,15 +196,18 @@ class _CreateAccountState extends State<CreateAccount> {
               
                           ),
                 ),
+                
                Row(children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, right:10 ),
+                  padding: const EdgeInsets.only(left: 20, right:20 ),
                   child:GFCheckbox(
                     size: GFSize.SMALL,
                     
                    activeBgColor: Color.fromARGB(255, 248, 246, 246),
-                        onChanged: (value) {
-           
+                   onChanged: (value) {
+                     setState(() {
+                    isChecked = value;
+                            });
                            },
                     value: isChecked,
                    inactiveIcon: null,

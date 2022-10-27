@@ -12,7 +12,7 @@ class TextFieldd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         
                       decoration: InputDecoration(

@@ -9,7 +9,7 @@ class MyNavigationBar extends StatefulWidget {
 }
 
 class _MyNavigationBarState extends State<MyNavigationBar> {
-  
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -36,17 +36,28 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             // ignore: prefer_const_literals_to_create_immutables
             items: [
                 
-                const BottomNavigationBarItem(icon: Icon(CupertinoIcons.list_dash,color: Colors.white,),label:"" ) ,
+                const BottomNavigationBarItem(icon: Icon(CupertinoIcons.list_dash,color: Colors.white, ),label:"" ) ,
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.doc_plaintext,color: Colors.white),label:""),
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.floppy_disk,color: Colors.white),label:"" ),
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.person,color: Colors.white),label:"")
                  
                    ],
-                   
+                   currentIndex: _selectedIndex,
                    onTap: (int index){
-            setState(() {
-                
-            });
+                         switch(index){
+                            case 0:
+                           Navigator.pushNamed(context, "/");
+                            break;
+                          case 1:
+                           Navigator.pushNamed(context, "/ticket-valide");
+                            break;
+                          case 2:
+                           Navigator.pushNamed(context, "/ticket-nonvalide");
+                           break;
+                          case 3:
+                           Navigator.pushNamed(context, "/create-account");
+                           break;
+    }
                    },
                    ),
           ),

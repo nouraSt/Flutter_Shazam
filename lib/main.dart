@@ -1,3 +1,4 @@
+import 'package:first_project/ui/pages/cration_success.dart';
 import 'package:first_project/ui/pages/create_account.dart';
 import 'package:first_project/ui/pages/forth_page.dart';
 import 'package:first_project/ui/pages/second_page.dart';
@@ -17,10 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        "/": ((context) => const CreateAccount()),
-        "/ajouter-ticket": ((context) => const SecondPage()),
+        "/": ((context) => const HomePage()),
+        //"/ajouter-ticket": ((context) => const SecondPage()),
         "/ticket-valide:": ((context) => const ThirdWidget()),
-        "/ticket-nonvalide":((context) => const ForthPage())
+        "/ticket-nonvalide":((context) => const ForthPage()),
+        "/create-account":((context) => const CreateAccount()),
+        "/account-created-success": ((context) => const MyWidget())
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
