@@ -136,93 +136,95 @@ class _CreateAccountState extends State<CreateAccount> {
               fontWeight: FontWeight.normal, color: Color.fromARGB(255, 56, 55, 55)),),
           ),
           body:
-            Column(
-               
-                children:   [
-                
-                const Padding(
-                  padding: EdgeInsets.only(top: 10,left: 20, ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('les champs marqués dune astériqsues\n sont obligatoire',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),),
+            SingleChildScrollView(
+              child: Column(
+                 
+                  children:   [
+                  
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10,left: 20, ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('les champs marqués dune astériqsues\n sont obligatoire',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10,),
-                TextFieldd('Nom*:','Nom*:'),
-                const SizedBox(height: 10,),
-                TextFieldd('Prenom*','Prenom*'),
-                const SizedBox(height: 10,),
-                TextFieldd('Email*','Email*'),
-                const SizedBox(height: 10,),
-                TextFieldd('Adresse*','Adresse*'),
-                const SizedBox(height: 10,),
-                Row(children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width/2,
-                    child: TextFieldd('CP*','CP*')),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width/2,
-                    child: TextFieldd('Ville*','Ville*')),
-                ],),
-                const SizedBox(height: 10,),
-                Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextField(
-                          decoration:  InputDecoration(
-                            
-                            filled: true,
-                            hintText: "Année de naissanc",
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: const BorderSide(
-                              width: 0, 
-                              style: BorderStyle.none,
-                          ),
+                  const SizedBox(height: 10,),
+                  TextFieldd('Nom*:','Nom*:'),
+                  const SizedBox(height: 10,),
+                  TextFieldd('Prenom*','Prenom*'),
+                  const SizedBox(height: 10,),
+                  TextFieldd('Email*','Email*'),
+                  const SizedBox(height: 10,),
+                  TextFieldd('Adresse*','Adresse*'),
+                  const SizedBox(height: 10,),
+                  Row(children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width/2,
+                      child: TextFieldd('CP*','CP*')),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width/2,
+                      child: TextFieldd('Ville*','Ville*')),
+                  ],),
+                  const SizedBox(height: 10,),
+                  Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: TextField(
+                            decoration:  InputDecoration(
+                              
+                              filled: true,
+                              hintText: "Année de naissanc",
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: const BorderSide(
+                                width: 0, 
+                                style: BorderStyle.none,
                             ),
-                            labelText: "Année de naissance*",
-                          ),
-                        
-                          readOnly: true,
-                          onTap: () {
-                            showCupertinoModalPopup<void>(
-                             context: context,
-                             builder: (BuildContext context) {
-                            return widgetCupertinoPicker();
-                           });
-                          },
-                          controller: textController,
-              
-                          ),
-                ),
+                              ),
+                              labelText: "Année de naissance*",
+                            ),
+                          
+                            readOnly: true,
+                            onTap: () {
+                              showCupertinoModalPopup<void>(
+                               context: context,
+                               builder: (BuildContext context) {
+                              return widgetCupertinoPicker();
+                             });
+                            },
+                            controller: textController,
                 
-               Row(children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right:20 ),
-                  child:GFCheckbox(
-                    size: GFSize.SMALL,
-                    
-                   activeBgColor: Color.fromARGB(255, 248, 246, 246),
-                   onChanged: (value) {
-                     setState(() {
-                    isChecked = value;
-                            });
-                           },
-                    value: isChecked,
-                   inactiveIcon: null,
-                  ),),
-                const Text('jaccepte les conditions d utilisation ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.normal),)
-               ],),
-               const SizedBox(height: 10,),
-              ElevatedButton(onPressed: null,
-               style: ElevatedButton.styleFrom(
-                        primary:const Color.fromARGB(255, 241, 84, 11),shape:RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0)
-                        )
-                              ), child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text('Créer mon compte et participer',style:TextStyle(fontSize: 15),)),)]
+                            ),
+                  ),
+                  
+                 Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right:20 ),
+                    child:GFCheckbox(
+                      size: GFSize.SMALL,
+                      
+                     activeBgColor: Color.fromARGB(255, 248, 246, 246),
+                     onChanged: (value) {
+                       setState(() {
+                      isChecked = value;
+                              });
+                             },
+                      value: isChecked,
+                     inactiveIcon: null,
+                    ),),
+                  const Text('jaccepte les conditions d utilisation ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.normal),)
+                 ],),
+                 const SizedBox(height: 10,),
+                ElevatedButton(onPressed: null,
+                 style: ElevatedButton.styleFrom(
+                          primary:const Color.fromARGB(255, 241, 84, 11),shape:RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40.0)
+                          )
+                                ), child: const Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text('Créer mon compte et participer',style:TextStyle(fontSize: 15),)),)]
+              ),
             )
       
                 

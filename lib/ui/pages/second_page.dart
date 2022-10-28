@@ -18,19 +18,26 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  File image= File('assets/images/logo1');
-
- Future pickImage() async {
-  print('open image');
+  File? image;
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    
+    
+  }
+ 
+ Future _getFromGallery() async {
+ 
   final imagee = await ImagePicker().pickImage(source: ImageSource.gallery);
   if(imagee == null) return;
-   final imageTemp = File(imagee.path);
+  final imageTemp = File(imagee.path);
   setState(() {
-   image = imageTemp;
+   this.image = imageTemp;
   });
 }
 
-Future getFromCamera() async {
+Future _getFromCamera() async {
   print('open camera');
     final pickedFile = await ImagePicker().getImage(
         source: ImageSource.camera,
@@ -82,22 +89,44 @@ Future getFromCamera() async {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GreenButton(Icon(CupertinoIcons.photo_camera),'Photo', pickImage()),
-                      GreenButton(Icon(CupertinoIcons.square_arrow_up),'importer', getFromCamera()),
+                      
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 0),
+                        child: FittedBox(
+                          fit:BoxFit.fitWidth,
+                          child: TextButton(onPressed: () { 
+                            _getFromCamera();
+                           },
+                           
+                          child: GreenButton(Icon(CupertinoIcons.photo_camera),
+                          'Photo', )),
+                        ),
+                      ),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 0),
+                          child: TextButton(onPressed: () { 
+                            _getFromGallery();
+                           },
+                          child: GreenButton(Icon(CupertinoIcons.square_arrow_up),'importer', )),
+                        ),
+                      ),
                     ],
                   ),
-                  Expanded(
-                    child: SizedBox(
-                      child: Container(
+                Expanded(
+                   child: SizedBox(
+                     child: Container(
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width-40,
                         color: Color.fromARGB(255, 255, 140, 174),
                         child: Center(child: 
-                        Image.asset((image).toString())
+                        Image.file(File(image.toString()) ,
+                        )
                         ),
                       ),
-                    ),
-                  ),
+                   ),
+                 ),
                  
                 ],
               ),
