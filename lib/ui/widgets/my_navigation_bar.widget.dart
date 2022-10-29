@@ -38,6 +38,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.list_dash,color: Colors.white, ),label:"" ) ,
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.doc_plaintext,color: Colors.white),label:""),
+                const BottomNavigationBarItem(icon: Icon(CupertinoIcons.nosign,color:  Color.fromARGB(255, 9, 49, 10),),label: ""),
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.floppy_disk,color: Colors.white),label:"" ),
                 const BottomNavigationBarItem(icon: Icon(CupertinoIcons.person,color: Colors.white),label:"")
                  

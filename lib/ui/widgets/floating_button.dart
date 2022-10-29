@@ -18,7 +18,7 @@ class _FloatingButtonState extends State<FloatingButton> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15.0)),
-        border: Border.all(color:Colors.white, width:5, style: BorderStyle.solid,
+        border: Border.all(color:Colors.white, width:7, style: BorderStyle.solid,
         )
       ),
       child: FloatingActionButton( 

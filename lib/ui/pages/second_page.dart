@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 
+
+
+import '../../services/service.dart';
 import '../widgets/my_navigation_bar.widget.dart';
 
 class SecondPage extends StatefulWidget {
@@ -18,7 +21,9 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  File? image;
+  String? image;
+  Service service = Service();
+  final _addFormKey = GlobalKey<FormState>();
 @override
   void initState() {
     // TODO: implement initState
@@ -30,10 +35,11 @@ class _SecondPageState extends State<SecondPage> {
  Future _getFromGallery() async {
  
   final imagee = await ImagePicker().pickImage(source: ImageSource.gallery);
+  service.addImage(imagee!.path);
   if(imagee == null) return;
-  final imageTemp = File(imagee.path);
+  final imageTemp = service.getImg();
   setState(() {
-   this.image = imageTemp;
+   this.image = imageTemp as String?;
   });
 }
 
@@ -44,10 +50,11 @@ Future _getFromCamera() async {
         maxWidth: 1800,
         maxHeight: 1800,
     );
+    service.addImage(pickedFile!.path);
     if (pickedFile != null) {
-        File imageFile = File(pickedFile.path);
+        final imageFile = service.getImg();
         setState(() {
-          image = imageFile;
+          image = imageFile as String?;
         });
    }
    
@@ -120,13 +127,13 @@ Future _getFromCamera() async {
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width-40,
                         color: Color.fromARGB(255, 255, 140, 174),
-                        child: Center(child: 
-                        Image.file(File(image.toString()) ,
+                        child:image !=null?  //Center(child: 
+                        Image.network(image!):const CircularProgressIndicator() ,
                         )
                         ),
                       ),
-                   ),
-                 ),
+                   
+                 
                  
                 ],
               ),
