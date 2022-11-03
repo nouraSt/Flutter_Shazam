@@ -1,15 +1,10 @@
-import 'dart:io';
+
+import 'dart:html';
 
 import 'package:first_project/ui/widgets/green_widget.dart';
-import 'package:first_project/ui/widgets/my_appBar.widget.dart';
-import 'package:first_project/ui/widgets/text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-
-
-
 import '../../services/service.dart';
 import '../widgets/my_navigation_bar.widget.dart';
 
@@ -21,7 +16,8 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  String? image;
+  File? image;
+  String? url;
   Service service = Service();
   final _addFormKey = GlobalKey<FormState>();
 @override
@@ -37,24 +33,24 @@ class _SecondPageState extends State<SecondPage> {
   final imagee = await ImagePicker().pickImage(source: ImageSource.gallery);
   service.addImage(imagee!.path);
   if(imagee == null) return;
-  final imageTemp = service.getImg();
+  String imagepath = imagee.path;
   setState(() {
-   this.image = imageTemp as String?;
+   this.url = service.getimUrl(imagepath);
   });
 }
 
 Future _getFromCamera() async {
-  print('open camera');
+ 
     final pickedFile = await ImagePicker().getImage(
         source: ImageSource.camera,
         maxWidth: 1800,
         maxHeight: 1800,
     );
-    service.addImage(pickedFile!.path);
+    
     if (pickedFile != null) {
-        final imageFile = service.getImg();
+        String imageFile = pickedFile.path;
         setState(() {
-          image = imageFile as String?;
+           this.url = service.getimUrl(imageFile);
         });
    }
    
@@ -127,8 +123,8 @@ Future _getFromCamera() async {
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width-40,
                         color: Color.fromARGB(255, 255, 140, 174),
-                        child:image !=null?  //Center(child: 
-                        Image.network(image!):const CircularProgressIndicator() ,
+                        child:url !=null?  //Center(child: 
+                        Image.network(url!):const CircularProgressIndicator() ,
                         )
                         ),
                       ),

@@ -55,9 +55,10 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                           case 2:
                            Navigator.pushNamed(context, "/ticket-nonvalide");
                            break;
-                          case 3:
+                          case 4:
                            Navigator.pushNamed(context, "/create-account");
                            break;
+
     }
                    },
                    ),

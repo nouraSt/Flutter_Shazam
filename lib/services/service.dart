@@ -17,21 +17,10 @@ var response = await request.send();
       return false;
     }
   }
-
-Future<String> getImg() async{
   
-   var getimUrl = Uri.http('http://localhost:8000/api/getimages');
-   var response = await http.get(getimUrl);
-   if (response.statusCode == 200) {
-    var jsonResponse =
-        jsonDecode(response.body) as Map<String, String>;
-        String url = jsonResponse['url'].toString();
-   return url;
-  } else {
-    print('Request failed with status: ${response.statusCode}.');
-    return 'no image loaded';
+  String getimUrl(String filePath){
+    return Uri.http('http://localhost:8000/api/getimages'+filePath).toString();
   }
 
-}
 }
 

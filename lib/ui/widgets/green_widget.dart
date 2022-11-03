@@ -27,7 +27,7 @@ class GreenButton extends StatelessWidget {
       child: Container(
           //height: MediaQuery.of(context).size.height*0.1,
           height:60,
-          width: MediaQuery.of(context).size.width/2-30,
+          width: MediaQuery.of(context).size.width/2-27,
           padding: EdgeInsets.symmetric(vertical: 0),
           decoration: const BoxDecoration(
              color:Color.fromARGB(255, 9, 49, 10),
